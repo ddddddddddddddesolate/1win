@@ -6,6 +6,7 @@ const Video = () => {
   const videoRef = useRef();
 
   const [muted, setMuted] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const unmuteVideo = useCallback(() => {
     setMuted(previousState => !previousState);
@@ -19,8 +20,20 @@ const Video = () => {
 
   return (
     <div className={styles.container}>
-      {/* @ts-ignore */}
-      <video ref={videoRef} className={styles.video} autoPlay muted playsInline preload="none">
+      {isLoading && (
+        <div className={styles.loading}>Loading...</div>
+      )}
+
+      <video
+        ref={videoRef as any}
+        className={styles.video}
+        onLoadedData={() => {
+          setIsLoading(false);
+        }}
+        autoPlay
+        muted
+        playsInline
+      >
         <source src={`${process.env.PUBLIC_URL}/videos/video.mov`} type="video/mp4" />
       </video>
 
