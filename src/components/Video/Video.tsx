@@ -2,7 +2,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import styles from './styles.module.scss';
 
-const Video = () => {
+type Props = {
+  onVideoEnded: () => void;
+};
+
+const Video = ({ onVideoEnded }: Props) => {
   const videoRef = useRef();
 
   const [muted, setMuted] = useState<boolean>(true);
@@ -30,11 +34,12 @@ const Video = () => {
         onLoadedData={() => {
           setIsLoading(false);
         }}
+        onEnded={onVideoEnded}
         autoPlay
         muted
         playsInline
       >
-        <source src={`${process.env.PUBLIC_URL}/videos/video.mov`} type="video/mp4" />
+        <source src={`${process.env.PUBLIC_URL}/videos/video.mp4`} type="video/mp4" />
       </video>
 
       {muted && (

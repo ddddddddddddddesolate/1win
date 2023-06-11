@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import qs from 'qs';
 
@@ -31,13 +31,19 @@ const Home = () => {
     if (query?.code) {
       setCookie('partner_key', 10, query.code as string);
     }
-  }, [search])
+  }, [search]);
+
+  const [isVideoEnded, setIsVideoEnded] = useState<boolean>(false);
 
   return (
     <div className={styles.container}>
       <Header />
-      <Video />
-      <Actions />
+
+      <Video onVideoEnded={() => {
+        setIsVideoEnded(true);
+      }} />
+
+      <Actions isVideoEnded={isVideoEnded} />
     </div>
   )
 };
