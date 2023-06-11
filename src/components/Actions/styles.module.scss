@@ -1,0 +1,69 @@
+@import 'src/app/typography/colors';
+
+@keyframes ani {
+  0% {
+    background-position: 50vw 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.container {
+  width: 100%;
+  height: 140px;
+
+  @media (max-width: 375px) {
+    height: 120px;
+  }
+
+  border-radius: 15px;
+
+  background-color: $secondaryColor;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: relative;
+
+  z-index: 0;
+
+  & > .title {
+    text-align: center;
+
+    margin-top: 10px;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+
+    color: $neutralColor;
+
+    @media (max-width: 375px) {
+      font-size: 14px;
+    }
+
+    & > span.earning {
+      font-weight: bold;
+    }
+  }
+
+  & > .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    border-radius: 15px;
+
+    background-color: $secondaryColor;
+
+    padding: 20px;
+
+    @media (max-width: 375px) {
+      padding: 14px;
+    }
+  }
+}

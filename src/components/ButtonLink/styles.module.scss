@@ -1,0 +1,48 @@
+@import 'src/app/typography/colors';
+
+$border: 2px;
+
+.button {
+  position: relative;
+
+  cursor: pointer;
+
+  padding: 16px 40px;
+
+  border-radius: 15px;
+
+  border: solid $border transparent;
+
+  outline: none;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  color: $neutralColor;
+
+  text-transform: uppercase;
+
+  background-color: $actionsPrimaryColor;
+
+  background-image: url('../../assets/button-bg.png');
+  background-position: -7px;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+
+  &:active {
+    text-decoration: none;
+  }
+
+  @media (max-width: 400px) {
+    padding: 12px 30px;
+  }
+
+  @media (min-width: 401px) and (max-width: 425px) {
+    padding: 14px 35px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
