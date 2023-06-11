@@ -1,8 +1,6 @@
 @import 'src/app/typography/colors';
 
 .container {
-  position: relative;
-
   margin-bottom: 25px;
 
   @media (max-width: 375px) {
@@ -20,43 +18,73 @@
     align-self: center;
   }
 
-  & > .video {
-    width: 100%;
-    max-height: 540px;
-    object-fit: cover;
+  & > .overlay {
+    position: relative;
 
-    border-radius: 10px;
+    & > .video {
+      width: 100%;
+      max-height: 540px;
+      object-fit: cover;
 
-    @media (max-height: 640px) {
-      max-height: 270px;
+      border-radius: 10px;
+
+      @media (max-height: 640px) {
+        max-height: 270px;
+      }
+
+      @media (min-height: 641px) and (max-height: 800px) {
+        max-height: 340px;
+      }
+
+      @media (min-height: 801px) and (max-height: 1334px) {
+        max-height: 450px;
+      }
     }
 
-    @media (min-height: 641px) and (max-height: 800px) {
-      max-height: 340px;
+    & > .unmute {
+      cursor: pointer;
+
+      position: absolute;
+
+      right: 5px;
+      bottom: 9px;
+
+      padding: 10px 15px;
+
+      color: $neutralColor;
+      background-color: $secondaryColor;
+
+      border-radius: 5px;
+
+      @media (max-width: 375px) {
+        font-size: 14px;
+      }
     }
 
-    @media (min-height: 801px) and (max-height: 1334px) {
-      max-height: 450px;
-    }
-  }
+    & > .restart {
+      position: absolute;
 
-  & > .unmute {
-    cursor: pointer;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
 
-    position: absolute;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
 
-    right: 5px;
-    bottom: 9px;
+      background-color: rgba($backgroundColor, .9);
 
-    padding: 10px 15px;
+      & > .icon {
+        height: 48px;
+        width: 48px;
 
-    color: $neutralColor;
-    background-color: $secondaryColor;
+        align-self: center;
 
-    border-radius: 5px;
+        background-image: url(../../../public/icons/restart.svg);
 
-    @media (max-width: 375px) {
-      font-size: 14px;
+        filter: invert(1);
+      }
     }
   }
 }
