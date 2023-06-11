@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import VideoAsset from 'assets/videos/video.mov';
-
 import styles from './styles.module.scss';
 
 const Video = () => {
@@ -22,8 +20,8 @@ const Video = () => {
   return (
     <div className={styles.container}>
       {/* @ts-ignore */}
-      <video ref={videoRef} className={styles.video} autoPlay muted playsInline>
-        <source src={VideoAsset} type="video/mp4" />
+      <video ref={videoRef} className={styles.video} autoPlay muted playsInline preload="none">
+        <source src={`${process.env.PUBLIC_URL}/videos/video.mov`} type="video/mp4" />
       </video>
 
       {muted && (
