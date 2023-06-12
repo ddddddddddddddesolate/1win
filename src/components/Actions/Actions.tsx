@@ -13,7 +13,7 @@ const Actions = ({ isVideoEnded }: Props) => (
     </div>
 
     <div className={styles.actions}>
-      <ButtonLink text="bet" url="https://telegram.me/+y7D5thSfOwo1ZWZi" />
+      <ButtonLink text="get free strategy" url="https://telegram.me/+y7D5thSfOwo1ZWZi" />
 
       <ButtonLink
         text="download"

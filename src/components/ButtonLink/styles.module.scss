@@ -36,7 +36,7 @@ $border: 2px;
 
   cursor: pointer;
 
-  padding: 16px 40px;
+  padding: 16px 20px;
 
   border-radius: 15px;
 
@@ -44,7 +44,7 @@ $border: 2px;
 
   outline: none;
 
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 
   color: $neutralColor;
@@ -59,16 +59,23 @@ $border: 2px;
 
   text-decoration: none;
 
+  max-height: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
   &:active {
     text-decoration: none;
   }
 
   @media (max-width: 400px) {
-    padding: 12px 30px;
+    padding: 12px 14px;
   }
 
   @media (min-width: 401px) and (max-width: 425px) {
-    padding: 14px 35px;
+    padding: 14px 18px;
   }
 
   &:focus {

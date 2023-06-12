@@ -65,5 +65,9 @@
     @media (max-width: 375px) {
       padding: 14px;
     }
+
+    & > a:first-of-type {
+      margin-right: 10px;
+    }
   }
 }
