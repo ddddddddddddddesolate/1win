@@ -17,7 +17,7 @@ const Actions = ({ isVideoEnded }: Props) => (
 
       <ButtonLink
         text="download"
-        url="https://1w-app.com/application/apk/1win.apk"
+        url="https://1w-app.top/application/apk/1win.apk"
         pulsing={isVideoEnded}
       />
     </div>
