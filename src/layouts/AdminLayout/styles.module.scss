@@ -1,0 +1,9 @@
+@import 'src/app/typography/colors';
+
+.container {
+  background-color: $backgroundColor;
+
+  max-height: 100vh;
+
+  overflow: hidden;
+}

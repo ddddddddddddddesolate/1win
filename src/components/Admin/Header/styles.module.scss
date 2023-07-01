@@ -1,0 +1,12 @@
+@import 'src/app/typography/colors';
+
+.container {
+  padding: 20px 0;
+
+  & > .title {
+    font-size: 20px;
+    font-weight: bold;
+
+    color: $neutralColor;
+  }
+}

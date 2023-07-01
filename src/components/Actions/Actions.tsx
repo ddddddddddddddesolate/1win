@@ -1,4 +1,8 @@
+import { useContext } from 'react';
+
 import ButtonLink from 'components/ButtonLink';
+
+import { PromoContext } from 'store/promo';
 
 import styles from './styles.module.scss';
 
@@ -6,22 +10,29 @@ type Props = {
   isVideoEnded: boolean;
 };
 
-const Actions = ({ isVideoEnded }: Props) => (
-  <div className={styles.container}>
-    <div className={styles.title}>
-      Download to get <span className={styles.earning}>5000₹</span>
-    </div>
+const Actions = ({ isVideoEnded }: Props) => {
+  const promo = useContext(PromoContext);
 
-    <div className={styles.actions}>
-      <ButtonLink text="get free strategy" url="https://telegram.me/+y7D5thSfOwo1ZWZi" />
+  return (
+    <div className={styles.container}>
+      <div className={styles.title}>
+        {promo?.footer?.text} <span className={styles.earning}>{promo?.footer?.money}</span>
+      </div>
 
-      <ButtonLink
-        text="download"
-        url="https://1w-app.top/application/apk/1win.apk"
-        pulsing={isVideoEnded}
-      />
+      <div className={styles.actions}>
+        <ButtonLink
+          text={promo?.leftButton?.text || ''}
+          url={promo?.leftButton?.link || ''}
+        />
+
+        <ButtonLink
+          text={promo?.rightButton?.text || ''}
+          url={promo?.rightButton?.link || ''}
+          pulsing={isVideoEnded}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 export default Actions;

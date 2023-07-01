@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+
+import { PromoContext } from 'store/promo';
 
 import styles from './styles.module.scss';
 
@@ -8,6 +10,8 @@ type Props = {
 
 const Video = ({ onVideoEnded }: Props) => {
   const videoRef = useRef();
+
+  const promo = useContext(PromoContext);
 
   const [muted, setMuted] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -29,34 +33,38 @@ const Video = ({ onVideoEnded }: Props) => {
         <div className={styles.loading}>Loading...</div>
       )}
 
-      {isVideoEnded ? (
-        <img
-          src={`${process.env.PUBLIC_URL}/images/gif.gif`}
-          className={styles.gif}
-          alt="1win"
-        />
-      ) : (
+      {promo && (
         <>
-          <video
-            ref={videoRef as any}
-            className={styles.video}
-            onLoadedData={() => {
-              setIsLoading(false);
-            }}
-            onEnded={() => {
-              onVideoEnded();
+          {isVideoEnded ? (
+            <img
+              src={promo.gif}
+              className={styles.gif}
+              alt="1win"
+            />
+          ) : (
+            <>
+              <video
+                ref={videoRef as any}
+                className={styles.video}
+                onLoadedData={() => {
+                  setIsLoading(false);
+                }}
+                onEnded={() => {
+                  onVideoEnded();
 
-              setIsVideoEnded(true);
-            }}
-            autoPlay
-            muted
-            playsInline
-          >
-            <source src={`${process.env.PUBLIC_URL}/videos/video.mp4`} type="video/mp4" />
-          </video>
+                  setIsVideoEnded(true);
+                }}
+                autoPlay
+                muted
+                playsInline
+              >
+                <source src={promo.video} type="video/mp4" />
+              </video>
 
-          {(muted && !isVideoEnded) && (
-            <div className={styles.unmute} onClick={unmuteVideo}>Unmute</div>
+              {(muted && !isVideoEnded) && (
+                <div className={styles.unmute} onClick={unmuteVideo}>Unmute</div>
+              )}
+            </>
           )}
         </>
       )}
