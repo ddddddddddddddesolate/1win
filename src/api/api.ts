@@ -13,7 +13,7 @@ const retrieveApiKeyFromQuery = (): string => {
 };
 
 export const getOnePromo = (code: string) =>
-  axiosInstance.get(`/promo/${code}`);
+  axiosInstance.get(`/promo/${code || 'default'}`);
 
 export const getAllPromos = () =>
   adminAxiosInstance.get('/promo', {
@@ -25,6 +25,21 @@ export const getAllPromos = () =>
 export const updateContent = (route: PromoRoutes, code: PromoType['id'], type: PromoFields, text: string) =>
   adminAxiosInstance.post(`/${route}`, { code, type, text }, {
     headers: {
+      'x-api-key': retrieveApiKeyFromQuery(),
+    },
+  });
+
+export const createPromo = (code: string) =>
+  adminAxiosInstance.post(`/promo`, { code }, {
+    headers: {
+      'x-api-key': retrieveApiKeyFromQuery(),
+    },
+  });
+
+export const uploadMedia = (formData: FormData) =>
+  adminAxiosInstance.post(`/upload`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
       'x-api-key': retrieveApiKeyFromQuery(),
     },
   });

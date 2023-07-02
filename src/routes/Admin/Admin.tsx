@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { ToastContainer } from 'react-toastify';
 
 import { PromoType } from 'app/types';
 import { getAllPromos } from 'api/api';
@@ -13,6 +14,8 @@ import Header from 'components/Admin/Header';
 import { PromoMapper } from 'mappers/PromoMapper';
 
 import styles from './styles.module.scss';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -37,9 +40,11 @@ const Admin = () => {
   return (
     <AdminLayout>
       <div className={styles.container}>
-        <AdminContext.Provider value={promos}>
+        <AdminContext.Provider value={{ promos, setPromos }}>
           <Header />
           <Promos />
+
+          <ToastContainer />
         </AdminContext.Provider>
       </div>
     </AdminLayout>

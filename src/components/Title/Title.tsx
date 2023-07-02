@@ -9,8 +9,8 @@ const Title = () => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.title}>{promo?.header?.text}</p>
-      <p className={styles.earning}>{promo?.header?.money}</p>
+      <div className={styles.title}>{promo?.header?.text}</div>
+      <div className={styles.earning}>{promo?.header?.money}</div>
     </div>
   );
 };

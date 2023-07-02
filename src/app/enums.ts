@@ -16,4 +16,6 @@ export enum PromoFields {
   TEXT  = 'text',
   MONEY = 'money',
   LINK  = 'link',
+  GIF   = 'gif',
+  VIDEO = 'video',
 }
